@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?461acd');
-  src:  url('fonts/icomoon.eot?461acd#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?461acd') format('truetype'),
-    url('fonts/icomoon.woff?461acd') format('woff'),
-    url('fonts/icomoon.svg?461acd#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?e6wtgy');
+  src:  url('fonts/icomoon.eot?e6wtgy#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?e6wtgy') format('truetype'),
+    url('fonts/icomoon.woff?e6wtgy') format('woff'),
+    url('fonts/icomoon.svg?e6wtgy#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-marlo-icon:before {
+  content: "\e993";
+}
 .icon-folder:before {
   content: "\e990";
 }

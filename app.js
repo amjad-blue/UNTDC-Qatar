@@ -214,8 +214,22 @@ function init() {
 	handleActiveLink()
 	handleScrollForKnowledgePage()
 	handleCounterUpNumbers()
+	AddYearsToSelect()
 }
 
+
+function AddYearsToSelect() {
+	const yearSelect = document.querySelector(".news-page .select-wrapper select");
+	const startYear = 2015;
+	const currentYear = new Date().getFullYear();
+
+	for (let year = currentYear; year >= startYear; year--) {
+		const option = document.createElement("option");
+		option.value = year;
+		option.textContent = year;
+		yearSelect.appendChild(option);
+	}
+}
 
 function handleCounterUpNumbers() {
 	gsap.registerPlugin(ScrollTrigger);
