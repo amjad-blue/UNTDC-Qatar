@@ -395,7 +395,7 @@ main {position: relative;z-index: 1;}
 
 .high-commission .list-item > a {font-size: 1.4rem !important;width: 100%;text-align: center;padding-block: 13px;}
 .high-commission .content .section:first-child {padding-top: 0;}
-
+.high-commission .content {padding-bottom: 30px;}
 
 
 .section-film-video .cards-wrapper {grid-template-rows: 1fr 1fr;grid-template-columns: 1fr 1fr;margin-top: var(--spacer-2)}
