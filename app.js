@@ -79,11 +79,11 @@ function addSwipes() {
 function handleFeedbackSectionSwiper() {
 	let maxHeightSwiper = 0
 	document.querySelectorAll(".feedback-section .swiper-slide").forEach((el) => {
-		const swipeInner = el.querySelector(".swipe-inner");
-		if (swipeInner.clientHeight > maxHeightSwiper) {
-			maxHeightSwiper = swipeInner.clientHeight;
+		const swipeContent = el.querySelector(".swipe-content");
+		if (swipeContent.clientHeight > maxHeightSwiper) {
+			maxHeightSwiper = swipeContent.clientHeight;
 		}
-		swipeInner.style.minHeight = `${maxHeightSwiper}px`;
+		swipeContent.style.minHeight = `${maxHeightSwiper}px`;
 	})
 }
 
@@ -96,7 +96,7 @@ function addLightGalleryForNews() {
 		toggleThumb: true,
 	});
 
-	lightGallery(document.querySelector('.news-details-page .main-image'), {
+	lightGallery(document.querySelector('.inner-page .main-image'), {
 		animateThumb: false,
 		zoomFromOrigin: false,
 		allowMediaOverlap: true,
@@ -182,8 +182,8 @@ function addModal() {
 		});
 	});
 
-	overlay.addEventListener("click", closeModal);
-	closeBtn.addEventListener("click", closeModal);
+	overlay?.addEventListener("click", closeModal);
+	closeBtn?.addEventListener("click", closeModal);
 }
 
 function addlightGalleryForVideo() {
@@ -210,13 +210,64 @@ function init() {
 		console.log(e)
 	}
 	addModal()
-
-
 	addlightGalleryForVideo()
-
-
-
-
+	handleActiveLink()
+	handleScrollForKnowledgePage()
+	handleCounterUpNumbers()
 }
 
+
+function handleCounterUpNumbers() {
+	gsap.registerPlugin(ScrollTrigger);
+	document.querySelectorAll(".stats-section .card .number").forEach((el, index) => {
+		const target = parseInt(el.dataset.target, 10);
+		const hasMillion = index === 2
+		if (isNaN(target)) return;
+		let obj = { val: 0 };
+		ScrollTrigger.create({
+			trigger: el,
+			start: "top 100%",
+			once: true,
+			onEnter: () => {
+				gsap.to(obj, {
+					val: target,
+					duration: 2,
+					ease: "power2.out",
+					onUpdate: () => {
+						el.textContent = `${Math.floor(obj.val).toLocaleString()}${hasMillion  ? "" : "+"}${hasMillion  ? "M" : ""}`;
+					}
+				});
+			}
+		});
+	});
+}
+
+function handleActiveLink() {
+	const currentPage = window.location.pathname.split("/").pop();
+	document.querySelectorAll(".list-items .list-item a").forEach(link => {
+		const linkPage = link.getAttribute("href");
+		if (linkPage === currentPage) {
+			link.classList.add("active");
+		}
+	});
+}
+
+
+function handleScrollForKnowledgePage() {
+	document.querySelectorAll('.sidebar .list-item a[href^="#"]').forEach(link => {
+		link.addEventListener('click', function (e) {
+			e.preventDefault();
+			const targetId = this.getAttribute('href').slice(1); // remove "#"
+			const el = document.getElementById(targetId);
+			if (el) {
+				const offset = 100;
+				const y = el.getBoundingClientRect().top + window.scrollY - offset;
+				window.scrollTo({
+					top: y,
+					behavior: 'smooth'
+				});
+			}
+		});
+	});
+}
 
