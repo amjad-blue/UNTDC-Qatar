@@ -119,7 +119,7 @@ main {position: relative;z-index: 1;}
 /*.nav-header .list-items .list-item a:hover:after {transform-origin: left;    transform: scaleX(1) rotate(0.001deg);}*/
 .nav-header .list-items .list-item a:after{content: "";position: absolute;bottom: 0em;right: 0;width: 100%;height: 0.125em;background: var(--primary-color);transition: transform 0.5s cubic-bezier(0.625, 0.05, 0, 1);transform-origin: left;transform: scaleX(0) rotate(0.001deg);border-radius: 0.125em;}
 .nav-header .list-items .list-item a:hover:after{transform-origin: right;transform: scaleX(1) rotate(0.001deg);}
-
+/**/
 .nav-header .list-items .list-item a:is(:hover, :focus, .active) {color: var(--primary-color);}
 .nav-header .list-items .list-item:first-child a {padding-inline-start: 0;}
 .header-bottom__links {display: flex;align-items: center;gap: 8px;}
