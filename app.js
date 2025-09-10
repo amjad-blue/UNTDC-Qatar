@@ -106,10 +106,10 @@ function addLightGalleryForNews() {
 
 function addModal() {
 	const cards = document.querySelectorAll(".stacked-style-card .cards-wrapper .card");
-	const overlay = document.getElementById("customOverlay");
-	const modal = document.getElementById("customModal");
-	const modalBody = document.getElementById("modalBody");
-	const closeBtn = document.getElementById("closeModal");
+	const overlay = document.getElementById("custom_overlay");
+	const modal = document.getElementById("custom_modal");
+	const modalBody = document.getElementById("modal_body");
+	const closeBtn = document.getElementById("close_modal");
 
 	const openModal = (cardHTML) => {
 		// Create a temporary container to extract parts
